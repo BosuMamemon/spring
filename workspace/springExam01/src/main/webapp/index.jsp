@@ -7,7 +7,10 @@
   <body>
     <h1><%= "Hello World!" %></h1>
     <br/>
-    <a href="pInsert">추가</a><br>
-    <a href="pList">전체보기</a><br>
+    <a href="pInsert">Person 추가하기</a><br>
+    <a href="pList">Person 전체보기</a><br>
+    <hr>
+    <a href="/address/aInsert">Address 추가하기</a><br>
+    <a href="/address/aList">Address 전체보기</a><br>
   </body>
 </html>

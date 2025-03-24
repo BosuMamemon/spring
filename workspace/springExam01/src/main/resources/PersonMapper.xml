@@ -6,7 +6,26 @@
     <insert id="personInsert">
         INSERT INTO persontb VALUES(#{id}, #{name}, #{password}, #{gender}, #{job})
     </insert>
+
     <select id="personList" resultType="com.example.springexam01.dto.Person">
         SELECT * FROM persontb
     </select>
+
+    <select id="personView" parameterType="String" resultType="com.example.springexam01.dto.Person">
+        SELECT * FROM persontb WHERE id = #{id}
+    </select>
+
+    <delete id="personDelete" parameterType="String">
+        DELETE FROM persontb WHERE id = #{id}
+    </delete>
+
+    <update id="personUpdate" parameterType="com.example.springexam01.dto.Person">
+        UPDATE persontb
+        SET
+            name = #{name},
+            password = #{password},
+            gender = #{gender},
+            job = #{job}
+        WHERE id = #{id}
+    </update>
 </mapper>

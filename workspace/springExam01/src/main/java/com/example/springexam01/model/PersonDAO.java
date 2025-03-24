@@ -19,8 +19,23 @@ public class PersonDAO {
     }
 
 //    전체보기
-    public List<Person> list() {
+    public List<Person> dao_list() {
         return sqlMapper.selectList("personList");
+    }
+
+//    뷰
+    public Person dao_view(String id) {
+        return sqlMapper.selectOne("personView", id);
+    }
+
+//    삭제
+    public void dao_delete(String id) {
+        sqlMapper.delete("personDelete", id);
+    }
+
+//    수정
+    public void dao_update(Person person) {
+        sqlMapper.update("personUpdate", person);
     }
 
 }

@@ -15,7 +15,7 @@
     <h2>Person List</h2>
     <c:forEach items="${personList}" var="person">
       이름: ${person.name}<br>
-      아이디: ${person.id}<br>
+      아이디: <a href="pView?id=${person.id}">${person.id}</a><br>
       성별: ${person.gender}<br>
       직업: ${person.job}<br>
       <br>
