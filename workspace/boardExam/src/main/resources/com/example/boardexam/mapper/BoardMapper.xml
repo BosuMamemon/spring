@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.boardexam.mapper.BoardMapper">
+    <sql id="search">
+        <where>
+            <if test="searchWord != null and searchField == 'subject'">
+                subject LIKE '%${searchWord}%'
+            </if>
+            <if test="searchWord != null and searchField == 'content'">
+                content LIKE '%${searchWord}%'
+            </if>
+        </where>
+    </sql>
+    <select id="searchList" resultType="com.example.boardexam.dto.BoardDTO">
+        SELECT * FROM board
+        <include refid="search"></include>
+    </select>
+    <select id="searchCount" resultType="Integer">
+        SELECT COUNT(*) FROM board
+        <include refid="search"></include>
+    </select>
+</mapper>
