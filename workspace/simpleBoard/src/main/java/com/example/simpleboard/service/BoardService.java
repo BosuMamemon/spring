@@ -18,6 +18,9 @@ public interface BoardService {
 //    수정
     public void update(BoardDTO board);
 
+//    수정폼
+    public BoardDTO update(int num);
+
 //    삭제
     public void delete(int num);
 

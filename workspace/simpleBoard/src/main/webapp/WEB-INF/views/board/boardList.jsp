@@ -23,7 +23,7 @@
 							<td>${ board.num }</td>
 							<td><a href="/board/view?num=${board.num}">${board.title}</a></td>
 							<td><b>${ board.writer }</b></td>
-							<td>${ board.regdate }</td>
+							<td><fmt:formatDate value="${ board.regdate }" pattern="yyyy-MM-dd"/></td>
 							<td>${ board.hitCount }</td>
 						</tr>
 					</c:forEach>

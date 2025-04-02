@@ -1,10 +1,12 @@
 package com.example.simpleboard.dto;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BoardDTO {
 //    필드
     private int num;

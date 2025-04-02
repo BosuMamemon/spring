@@ -34,6 +34,11 @@ public class BoardRepositoryImpl implements BoardRepository {
     }
 
     @Override
+    public BoardDTO update(int num) {
+        return boardMapper.updateForm(num);
+    }
+
+    @Override
     public void delete(int num) {
         boardMapper.delete(num);
     }
@@ -41,5 +46,10 @@ public class BoardRepositoryImpl implements BoardRepository {
     @Override
     public int getCount(HashMap<String, Object> map) {
         return boardMapper.getCount(map);
+    }
+
+    @Override
+    public void updateReadcount(int num) {
+        boardMapper.updateReadcount(num);
     }
 }

@@ -7,20 +7,27 @@ import java.util.List;
 
 public interface BoardRepository {
     //    추가
-    public void insert(BoardDTO board);
+    void insert(BoardDTO board);
 
     //    전체보기
-    public List<BoardDTO> findAll(HashMap<String, Object> map);
+    List<BoardDTO> findAll(HashMap<String, Object> map);
 
     //    상세보기
-    public BoardDTO findByNum(int num);
+    BoardDTO findByNum(int num);
 
     //    수정
-    public void update(BoardDTO board);
+    void update(BoardDTO board);
+
+    //    수정폼
+    BoardDTO update(int num);
 
     //    삭제
-    public void delete(int num);
+    void delete(int num);
 
     //    갯수
-    public int getCount(HashMap<String, Object> map);
+    int getCount(HashMap<String, Object> map);
+
+    //    조회수 증가
+    void updateReadcount(int num);
+
 }
