@@ -12,7 +12,7 @@
             <appender-ref ref="console" />
         </logger>
 
-        <logger name="org.example" level="INFO" additivity="false">
+        <logger name="org.example" level="DEBUG" additivity="false">
             <appender-ref ref="console" />
         </logger>
 

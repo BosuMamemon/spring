@@ -5,15 +5,15 @@
     <sql id="search">
         <where>
             <if test="word != null and field == 'title'">
-                title LIKE '%${word}%'
+                title LIKE CONCAT('%', #{word}, '%')
             </if>
             <if test="word != null and field == 'content'">
-                content LIKE '%${word}%'
+                content LIKE CONCAT('%', #{word}, '%')
             </if>
         </where>
     </sql>
     <select id="findAll" resultType="com.example.simpleboard.dto.BoardDTO">
-        SELECT * FROM boards <include refid="search"></include>
+        SELECT * FROM boards <include refid="search"></include> ORDER BY num DESC limit #{pageStart}, #{pageSize}
     </select>
     <select id="getCount" resultType="Integer">
         SELECT COUNT(*) FROM boards <include refid="search"></include>

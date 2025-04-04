@@ -17,6 +17,13 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>/WEB-INF/spring/servlet-context.xml</param-value>
         </init-param>
+        <multipart-config>
+<!--            파일 업로드에 관한 설정들 -->
+            <location>C:\\JHM\\Spring\\workspace\\uploads</location>
+            <max-file-size>20971520</max-file-size> <!-- 1mb * 20 -->
+            <max-request-size>41943040</max-request-size>   <!-- 40mb -->
+            <file-size-threshold>20971520</file-size-threshold> <!-- 20mb -->
+        </multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>

@@ -1,6 +1,7 @@
 package com.example.simpleboard.controller;
 
 import com.example.simpleboard.dto.BoardDTO;
+import com.example.simpleboard.dto.PageDTO;
 import com.example.simpleboard.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -32,18 +33,31 @@ public class BoardController {
 
     @GetMapping("list")
     public String getList(
+            @RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
             @RequestParam(value = "field", defaultValue = "title") String field,
             @RequestParam(value = "word", defaultValue = "") String word,
             Model model
     ) {
         HashMap<String, Object> map = new HashMap<>();
+        int currentPage = Integer.parseInt(pageNum);
+        int pageSize = 5;
+        int blockpage = 3;
         map.put("field", field);
         map.put("word", word);
-        System.out.println(map.get("word"));
-        List<BoardDTO> bArr = boardService.findAll(map);
+        map.put("pageStart", (currentPage-1)*pageSize);
+        map.put("pageSize", pageSize);
         int count = boardService.getCount(map);
+        PageDTO page = new PageDTO(count, currentPage, pageSize, blockpage);
+        page.setField("field");
+        page.setWord(word);
+
+        log.info(page.toString());
+
+        List<BoardDTO> bArr = boardService.findAll(map);
         model.addAttribute("bArr", bArr);
         model.addAttribute("count", count);
+        model.addAttribute("page", page);
+
         return "board/boardList";
     }
 
