@@ -1,4 +1,4 @@
-package com.example.simpleboard.service;
+package com.example.simpleboard.repository;
 
 import com.example.simpleboard.dto.FileBoardDTO;
 

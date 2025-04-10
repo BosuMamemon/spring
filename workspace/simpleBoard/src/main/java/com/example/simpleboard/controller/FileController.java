@@ -52,12 +52,15 @@ public class FileController {
 
 //    파일 게시판 추가
     @PostMapping("fileBoardInsert")
-    public void postFileBoardInsert(
+    public String postFileBoardInsert(
             @ModelAttribute FileBoardDTO fileBoard,
             HttpServletRequest request
     ) {
 //        파일 저장
         String uploadPath = request.getSession().getServletContext().getRealPath("/") + "resources/images/";
+        if(!new File(uploadPath).exists()) {
+            new File(uploadPath).mkdirs();
+        }
         MultipartFile multipartFile = fileBoard.getUpload();
         String fileName = UUID.randomUUID().toString() + "_" + multipartFile.getOriginalFilename();
         File saveFile = new File(uploadPath, fileName);
@@ -69,5 +72,11 @@ public class FileController {
         }
 //        DB 저장
         fileService.fileInsert(fileBoard);
+        return "redirect:/file/fileBoardList";
+    }
+
+    @GetMapping("/fileBoardList")
+    public void getFileBoardList(Model model) {
+        model.addAttribute("fArr", fileService.fileList());
     }
 }

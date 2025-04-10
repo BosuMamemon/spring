@@ -1,6 +1,7 @@
 package com.example.simpleboard.service;
 
 import com.example.simpleboard.dto.FileBoardDTO;
+import com.example.simpleboard.repository.FileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,6 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public List<FileBoardDTO> fileList() {
-        return List.of();
+        return fileRepository.fileList();
     }
 }

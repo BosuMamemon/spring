@@ -1,4 +1,4 @@
-package com.example.simpleboard.service;
+package com.example.simpleboard.repository;
 
 import com.example.simpleboard.dto.FileBoardDTO;
 import com.example.simpleboard.mapper.FileMapper;
@@ -19,6 +19,6 @@ public class FileRepositoryImpl implements FileRepository {
 
     @Override
     public List<FileBoardDTO> fileList() {
-        return List.of();
+        return fileMapper.fileList();
     }
 }
